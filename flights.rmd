@@ -33,7 +33,6 @@ colnames(flights)[colnames(flights)==" arr_delay"] <- "arr_delay"
 colnames(flights)[colnames(flights)==" carrier_delay"] <- "carrier_delay"
 ```
 
-
 ```{r}
 str(flights)
 ```
