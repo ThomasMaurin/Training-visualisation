@@ -1,0 +1,153 @@
+---
+title: "Airline flights project"
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(gridExtra)
+library(GGally)
+library(RColorBrewer)
+```
+
+```{r}
+# Load the Data
+setwd('C:/Users/user/Documents/Data vizualisation')
+flights <- read.csv('airline_delay_causes.csv',
+                header = T,
+                sep = ",",
+                dec = '.',
+
+                check.names = F
+                )
+```
+
+```{r}
+colnames(flights)[colnames(flights)==" arr_delay"] <- "arr_delay"
+colnames(flights)[colnames(flights)==" carrier_delay"] <- "carrier_delay"
+```
+
+
+```{r}
+str(flights)
+```
+
+
+
+```{r}
+ggplot(aes(x = airport, y = arr_del15, fill=year), data=flights) + 
+  geom_point(alpha=0.1) +
+  scale_color_brewer(type='seq')
+```
+
+arr_del15 is a count of delays above 15 minutes
+arr_flights is a count of flights
+arr_delay is a sum of minutes
+
+work program: select 20 biggest airports
+total flights, total delays
+=> view average delay by airport, evolution over time
+
+```{r select the needed columns}
+delays=subset(flights,select=c('year', 'airport', 'carrier', 'arr_delay', 
+                               'arr_flights', 'airport_name'))
+```
+
+```{r select 20 biggest airports}
+toplist<- delays %>% 
+   group_by(airport) %>% 
+   summarise(N=sum(arr_flights))%>%
+   top_n(n=20, N) %>%
+   select(airport) 
+
+```
+
+
+```{r build the dataset of 20 biggest airports}
+myflight <- delays %>%
+  semi_join(toplist, by='airport') %>%
+  group_by(airport, year, airport_name)%>% 
+  summarise(arr_delay=sum(arr_delay), arr_flights=sum(arr_flights)) %>% 
+  ungroup()
+```
+```{r}
+myflight$avg_delay <- if (myflight$arr_flights==0) 0 else 
+  myflight$arr_delay/myflight$arr_flights
+```
+
+```{r}
+colourCount = length(unique(myflight$airport))
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+```
+
+```{r graph of total delays}
+
+ggplot(aes(x=year, y=arr_delay, fill=airport), data=myflight)+
+  geom_bar(stat='identity')+ 
+  scale_fill_manual(values = getPalette(colourCount))
+  
+```
+
+
+```{r graph of total flights}
+ggplot(aes(x=year, y=arr_flights, fill=airport), data=myflight)+
+  geom_bar(stat='identity')+ 
+  scale_fill_manual(values = getPalette(colourCount))
+```
+
+
+```{r}
+ggplot(aes(x=year, y=arr_delay/arr_flights, fill=airport), data=myflight)+
+  geom_bar(stat='identity')+ 
+  scale_fill_manual(values = getPalette(colourCount))
+```
+
+
+```{r}
+ggplot(aes(x=year, y=arr_delay/arr_flights, color=airport), data=myflight)+
+  geom_line(size=2)+ 
+  scale_color_manual(values = getPalette(colourCount))
+```
+
+```{r build the total airports row}
+tot <- myflight %>%
+  group_by(year) %>%
+  summarise(arr_flights=sum(arr_flights), arr_delay=sum(arr_delay))
+```
+
+```{r complete the total airports row}
+tot$avg_delay <- tot$arr_delay/tot$arr_flights
+tot$airport<-"ALL"
+tot$airport_name <- "20 biggest US airports"
+```
+
+```{r}
+ggplot(aes(x=year, y=avgdelay), data=tot)+geom_line()+ylim(c(0,13))
+```
+
+```{r include the total row in the rest}
+myflight <-rbind(myflight, tot)
+
+```
+
+
+```{r sort the table}
+myflight <- myflight[order(myflight$airport),]
+```
+
+
+```{r}
+write.csv(myflight, file='myflight.csv')
+```
+
+```{r extract airport codes and names only}
+myairports <- unique(subset(myflight,select=c('airport', 'airport_name')))
+write.csv(myairports, file='myairports.csv')
+```
+
