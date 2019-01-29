@@ -1,0 +1,85 @@
+"","airport","year","airport_name","arr_delay","arr_flights","avg_delay"
+"1","ATL",2015,"Atlanta, GA: Hartsfield-Jackson Atlanta International",3612426,379498,9.51895925670227
+"2","ATL",2016,"Atlanta, GA: Hartsfield-Jackson Atlanta International",3648623,384252,9.49539104545975
+"3","ATL",2017,"Atlanta, GA: Hartsfield-Jackson Atlanta International",3776552,364596,10.3581827557077
+"4","ATL",2018,"Atlanta, GA: Hartsfield-Jackson Atlanta International",3461503,327365,10.5738334886136
+"5","BOS",2015,"Boston, MA: Logan International",1438766,118012,12.1916923702674
+"6","BOS",2016,"Boston, MA: Logan International",1502591,121253,12.3921964817365
+"7","BOS",2017,"Boston, MA: Logan International",2010881,125452,16.0290868220515
+"8","BOS",2018,"Boston, MA: Logan International",2005058,124446,16.111871815888
+"9","BWI",2015,"Baltimore, MD: Baltimore/Washington International Thurgood Marshall",899109,94105,9.55431698634504
+"10","BWI",2016,"Baltimore, MD: Baltimore/Washington International Thurgood Marshall",804186,96211,8.35856606832898
+"11","BWI",2017,"Baltimore, MD: Baltimore/Washington International Thurgood Marshall",888101,101019,8.79142537542442
+"12","BWI",2018,"Baltimore, MD: Baltimore/Washington International Thurgood Marshall",893922,89444,9.99420866687536
+"13","CLT",2015,"Charlotte, NC: Charlotte Douglas International",853232,109895,7.76406569907639
+"14","CLT",2016,"Charlotte, NC: Charlotte Douglas International",886522,110687,8.00926938122815
+"15","CLT",2017,"Charlotte, NC: Charlotte Douglas International",953566,113086,8.43221972657977
+"16","CLT",2018,"Charlotte, NC: Charlotte Douglas International",2054914,195588,10.506339857251
+"17","DCA",2015,"Washington, DC: Ronald Reagan Washington National",812082,80617,10.0733344083754
+"18","DCA",2016,"Washington, DC: Ronald Reagan Washington National",844186,77797,10.8511382186974
+"19","DCA",2017,"Washington, DC: Ronald Reagan Washington National",799945,74401,10.751804411231
+"20","DCA",2018,"Washington, DC: Ronald Reagan Washington National",1388619,110129,12.6090221467552
+"21","DEN",2015,"Denver, CO: Denver International",2444176,214135,11.4141826417914
+"22","DEN",2016,"Denver, CO: Denver International",2183431,226225,9.65159023096475
+"23","DEN",2017,"Denver, CO: Denver International",2178541,223234,9.75900176496412
+"24","DEN",2018,"Denver, CO: Denver International",2221904,198045,11.2191875583832
+"25","DFW",2015,"Dallas/Fort Worth, TX: Dallas/Fort Worth International",3257391,260615,12.4988623064674
+"26","DFW",2016,"Dallas/Fort Worth, TX: Dallas/Fort Worth International",2580526,196031,13.1638669394126
+"27","DFW",2017,"Dallas/Fort Worth, TX: Dallas/Fort Worth International",2146478,181208,11.8453821023354
+"28","DFW",2018,"Dallas/Fort Worth, TX: Dallas/Fort Worth International",3249146,233821,13.8958690622314
+"29","DTW",2015,"Detroit, MI: Detroit Metro Wayne County",1208397,118311,10.2137332961432
+"30","DTW",2016,"Detroit, MI: Detroit Metro Wayne County",1310991,124127,10.5616908488886
+"31","DTW",2017,"Detroit, MI: Detroit Metro Wayne County",1479476,126699,11.6770929525884
+"32","DTW",2018,"Detroit, MI: Detroit Metro Wayne County",1484746,132430,11.2115532734275
+"33","IAH",2015,"Houston, TX: George Bush Intercontinental/Houston",1891591,159910,11.8290976174098
+"34","IAH",2016,"Houston, TX: George Bush Intercontinental/Houston",1408841,137092,10.276609867826
+"35","IAH",2017,"Houston, TX: George Bush Intercontinental/Houston",1226123,129224,9.48835355661487
+"36","IAH",2018,"Houston, TX: George Bush Intercontinental/Houston",1610953,144393,11.1567250489982
+"37","JFK",2015,"New York, NY: John F. Kennedy International",1520945,102094,14.8974964248634
+"38","JFK",2016,"New York, NY: John F. Kennedy International",1509759,97726,15.448897939136
+"39","JFK",2017,"New York, NY: John F. Kennedy International",1946640,94419,20.6170368252153
+"40","JFK",2018,"New York, NY: John F. Kennedy International",1808149,108554,16.6566777824861
+"41","LAS",2015,"Las Vegas, NV: McCarran International",1422520,145900,9.74996572995202
+"42","LAS",2016,"Las Vegas, NV: McCarran International",1474194,150690,9.78295839139956
+"43","LAS",2017,"Las Vegas, NV: McCarran International",1547085,151729,10.1963698436027
+"44","LAS",2018,"Las Vegas, NV: McCarran International",1431509,135503,10.5644081680848
+"45","LAX",2015,"Los Angeles, CA: Los Angeles International",2506055,212435,11.7968084355215
+"46","LAX",2016,"Los Angeles, CA: Los Angeles International",2707250,212972,12.7117649268448
+"47","LAX",2017,"Los Angeles, CA: Los Angeles International",2941457,214312,13.7251157191385
+"48","LAX",2018,"Los Angeles, CA: Los Angeles International",1957953,185543,10.5525565502336
+"49","LGA",2015,"New York, NY: LaGuardia",1666938,108151,15.4130613679023
+"50","LGA",2016,"New York, NY: LaGuardia",1640329,96586,16.9830927877746
+"51","LGA",2017,"New York, NY: LaGuardia",1705835,93334,18.2766730237641
+"52","LGA",2018,"New York, NY: LaGuardia",2514329,143761,17.4896460096966
+"53","MCO",2015,"Orlando, FL: Orlando International",1388459,120028,11.5677925150798
+"54","MCO",2016,"Orlando, FL: Orlando International",1480625,125729,11.7763204988507
+"55","MCO",2017,"Orlando, FL: Orlando International",1575735,131998,11.9375672358672
+"56","MCO",2018,"Orlando, FL: Orlando International",1554777,114476,13.5816852440686
+"57","MDW",2015,"Chicago, IL: Chicago Midway International",802640,88497,9.06968597805575
+"58","MDW",2016,"Chicago, IL: Chicago Midway International",654503,87802,7.45430628003918
+"59","MDW",2017,"Chicago, IL: Chicago Midway International",727443,87201,8.34214057178243
+"60","MDW",2018,"Chicago, IL: Chicago Midway International",670001,73033,9.17394876288801
+"61","MSP",2015,"Minneapolis, MN: Minneapolis-St Paul International",1185545,122751,9.65812905801175
+"62","MSP",2016,"Minneapolis, MN: Minneapolis-St Paul International",1378339,129148,10.6725539690897
+"63","MSP",2017,"Minneapolis, MN: Minneapolis-St Paul International",1306333,134571,9.70738866471974
+"64","MSP",2018,"Minneapolis, MN: Minneapolis-St Paul International",1452260,134577,10.7912942033185
+"65","ORD",2015,"Chicago, IL: Chicago O'Hare International",4280327,313514,13.6527459698769
+"66","ORD",2016,"Chicago, IL: Chicago O'Hare International",3225362,243889,13.2247128816798
+"67","ORD",2017,"Chicago, IL: Chicago O'Hare International",3599611,266377,13.5132199852089
+"68","ORD",2018,"Chicago, IL: Chicago O'Hare International",4435013,277944,15.9564984313387
+"69","PHL",2015,"Philadelphia, PA: Philadelphia International",825103,72106,11.4429173716473
+"70","PHL",2016,"Philadelphia, PA: Philadelphia International",782971,73166,10.7012956837876
+"71","PHL",2017,"Philadelphia, PA: Philadelphia International",854121,73202,11.6680008742931
+"72","PHL",2018,"Philadelphia, PA: Philadelphia International",1394740,97866,14.2515275989618
+"73","SEA",2015,"Seattle, WA: Seattle/Tacoma International",1018723,121292,8.39892985522541
+"74","SEA",2016,"Seattle, WA: Seattle/Tacoma International",1126861,132627,8.49646753677607
+"75","SEA",2017,"Seattle, WA: Seattle/Tacoma International",1347232,137161,9.82226726256006
+"76","SEA",2018,"Seattle, WA: Seattle/Tacoma International",1173245,118674,9.88628511721186
+"77","SFO",2015,"San Francisco, CA: San Francisco International",2213414,162136,13.6515887896581
+"78","SFO",2016,"San Francisco, CA: San Francisco International",2900912,172398,16.8268309377139
+"79","SFO",2017,"San Francisco, CA: San Francisco International",3621342,174674,20.7320036181687
+"80","SFO",2018,"San Francisco, CA: San Francisco International",2447358,147476,16.5949578236459
+"81","ALL",2015,"20 biggest US airports",35247839,3104002,11.3556109177765
+"82","ALL",2016,"20 biggest US airports",34051002,2996408,11.3639404246685
+"83","ALL",2017,"20 biggest US airports",36632497,2997897,12.2193981314235
+"84","ALL",2018,"20 biggest US airports",39210099,3093068,12.6767659165592
