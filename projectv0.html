@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+      <style>
+        h2 {
+          color: black;
+          text-align: center;
+        }
+
+        .axis {
+          font-family: arial;
+          font-size: 0.6em;
+        }
+
+        path {
+          fill: none;
+          stroke: black;
+          stroke-width: 2px;
+        }
+
+        .tick {
+          fill: none;
+          stroke: black;
+        }
+
+        circle {
+          opacity: 0.4;
+          stroke: none;
+        }
+
+        .line_plot {
+          fill: none;
+          stroke: #4eb0bb;
+          stroke-width: 1px;
+        }
+      </style>
+
+    <script type="text/javascript">
+      format = d3.time.format("%d-%m-%Y (%H:%M h)");
+
+      function draw(data) {
+
+         /*
+         D3.js setup code
+         */
+
+          "use strict";
+		 
+        var margin = 75,
+              width = 1400 - margin,
+              height = 600 - margin;
+
+        d3.select("body")
+              .append("h2")
+              .text("Average air travel delays are on the rise");
+
+        var svg = d3.select("body")
+              .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+              .append('g')
+              .attr('class', 'chart');
+		
+		
+
+          /*
+          Dimple.js Chart construction code
+          */
+		  
+		var myChart = new dimple.chart(svg, data);
+		myChart.setBounds(60, 30, 510, 305);
+		debugger;
+		var x = myChart.addCategoryAxis("x", "year");
+		myChart.addMeasureAxis("y", "arr_delay");
+		myChart.addSeries(null, dimple.plot.line);
+		myChart.draw();
+		
+		};
+ 
+    </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 (not dimple.js) to load the TSV file
+    and pass the contents of it to the draw function
+    */
+   d3.csv("myflight.csv", draw);
+  /*
+  d3.csv("myflight.csv", function(d) {
+  return {
+    year : d.year,
+    airport : d.airport,
+    "arrival delay" : +d.arr_delay,
+	flights : +d.arr_flights
+    };}).draw
+	*/
+  </script>
+</body>
+</html>

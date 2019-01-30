@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+
+      <style>
+        h2 {
+			color: black;
+			text-align: left;
+			margin-inline-start : 80px;
+        }
+
+
+      </style>
+	<script type='text/javascript'>
+	var tabulate = function (data,columns) {
+		var table = d3.select('body').append('table')
+		var thead = table.append('thead')
+		var tbody = table.append('tbody')
+
+		thead.append('tr')
+			.selectAll('th')
+			.data(columns)
+			.enter()
+			.append('th')
+			.text(function (d) { return d })
+
+		var rows = tbody.selectAll('tr')
+			.data(data)
+			.enter()
+		.append('tr')
+
+		var cells = rows.selectAll('td')
+			.data(function(row) {
+				return columns.map(function (column) {
+					return { column: column, value: row[column] }
+				})
+			})
+			.enter()
+			.append('td')
+			.text(function (d) { return d.value })
+
+		return table;
+	}
+	
+	</script>
+
+    <script type="text/javascript">
+  
+
+      function draw(data) {
+
+         /*
+         D3.js setup code
+         */
+
+          "use strict";
+		
+		
+        var margin = 75,
+              width = 1400 - margin,
+              height = 500 - margin;
+
+        d3.select("body")
+              .append("h2")
+              .text("Average air travel delays are slowly rising");
+
+        var svg = d3.select("body")
+              .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+              .append('g')
+              .attr('class', 'chart');
+		
+		
+
+          /*
+          Dimple.js Chart construction code
+          */
+  
+		var myChart = new dimple.chart(svg, data);
+		myChart.setBounds(60, 30, 510, 305);
+		// axes definition
+		var x = myChart.addCategoryAxis("x", "year");
+		var y = myChart.addMeasureAxis("y", "avg_delay");
+		y.title = "average delay in minutes";
+		// defining the line chart, one line per airport
+		var lines = myChart.addSeries("airport", dimple.plot.line);
+		lines.addOrderRule("airport");
+		lines.lineWeight = 1;
+		lines.lineMarkers = true;
+		// positioning the legend at the bottom
+
+		var legd = myChart.addLegend(60, 400, 510, 60);
+		legd.fontSize = 15;
+		
+		// drawing the chart				
+		myChart.draw();
+		//enhance the average of all airports with a thicker stroke and black color
+		
+		myChart.svg.selectAll(".dimple-all").style("stroke", "black").style("stroke-width",4);
+		
+		
+		// interactive legend from dimplejs.org
+		
+		// This is a critical step.  By doing this we orphan the legend. This
+        // means it will not respond to graph updates.  Without this the legend
+        // will redraw when the chart refreshes removing the unchecked item and
+        // also dropping the events we define below.
+		myChart.legends = [];
+		
+		
+		// Get a unique list of airport values to use when filtering
+        var filterValues = dimple.getUniqueValues(data, "airport");
+		
+		// redraw with only the average of all airports, with a delay for animation
+		filterValues=["ALL"];
+		
+		myChart.data = dimple.filterData(data, "airport", filterValues);
+		myChart.draw(10000);
+
+		
+
+        // add the legend title
+        svg.selectAll("title_text")
+          .data(["Click legend to show/hide arrival airports:"])
+          .enter()
+          .append("text")
+            .attr("x", 150)
+            .attr("y", 390)
+            .style("font-family", "sans-serif")
+            .style("font-size", "15px")
+            .style("color", "Black")
+            .text(function (d) { return d; });
+		//set all rectangles as hidden
+		legd.shapes.selectAll("rect").style("opacity", 0.2);
+
+
+        // Get all the rectangles from our now orphaned legend
+        legd.shapes.selectAll("rect")
+          // Add a click event to each rectangle
+          .on("click", function (e) {
+            // This indicates whether the item is already visible or not
+            var hide = false;
+            var newFilters = [];
+            // If the filters contain the clicked shape hide it
+            filterValues.forEach(function (f) {
+              if (f === e.aggField.slice(-1)[0]) {
+                hide = true;
+              } else {
+                newFilters.push(f);
+              }
+            });
+            // Hide the shape or show it
+            if (hide) {
+              d3.select(this).style("opacity", 0.2);
+            } else {
+              newFilters.push(e.aggField.slice(-1)[0]);
+              d3.select(this).style("opacity", 0.8);
+            }
+            // Update the filters
+            filterValues = newFilters;
+            // Filter the data
+            myChart.data = dimple.filterData(data, "airport", filterValues);
+            // Passing a duration parameter makes the chart animate. Without
+            // it there is no transition
+            myChart.draw(800);
+			// keep the all airport line thicker
+			myChart.svg.selectAll(".dimple-all").style("stroke", "black").style("stroke-width",4);
+          });
+
+		}
+ 
+    </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 (not dimple.js) to load the CSV file
+    and pass the contents of it to the draw function
+    */
+   d3.csv("myflight.csv", draw);
+  
+  </script>
+  <div style="background-color:lightgray">
+  <h3>What is this visualization about?</h3>
+  <p>The data presented here is the average arrival delay, for all aircraft arriving in one
+  of the biggest US airports, using data from the Bureau of Transportation Statistics.</p>
+	</div>
+	<script type="text/javascript">
+	d3.csv("myairports.csv",function (data) {
+		var columns = ['airport','airport_name']
+		tabulate(data,columns);
+	})
+	</script>
+</body>
+</html>
