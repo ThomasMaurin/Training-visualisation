@@ -82,5 +82,24 @@ Fourth user feedback
 Fist and second user:
 Great improvement from the initial design !
 
+# RESOURCES
 
+Udacity training
 
+Bureau of transportation statistics
+https://www.bts.gov/
+
+Stephen Few, "the Right Graph"
+
+Dimple
+http://dimplejs.org/
+
+D3
+https://d3js.org/
+
+Various git/gits/stackoverflow
+jfreels https://gist.github.com/jfreels/6814721.
+https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple#filterData
+https://stackoverflow.com/questions/39291542/is-it-possible-to-highlight-bars-in-dimple-js-bar-chart-based-on-y-axis-value
+
+Airbus Helicopters colleagues and my wife, for providing feedback !
